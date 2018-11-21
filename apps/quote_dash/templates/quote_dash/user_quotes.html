@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote_dash/css/main.css' %}">
+    <title>User Quotes</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-secondary navbar-dark fixed-top">
+    <span class="navbar-text col-md-9">
+        <h5>Quotes of {{this_user.first_name}} {{this_user.last_name}}</h5>
+    </span>
+    <ul class="navbar-nav col-md-3">
+        <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Back</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid" style="margin-top:80px">
+    {% for q in only_this_quotes %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 card" style="margin-bottom: 10px;">
+            <div class="card-body">
+                <p>{{q.author}}: "{{q.desc}}"</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>

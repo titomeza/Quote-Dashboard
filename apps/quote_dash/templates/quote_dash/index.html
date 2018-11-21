@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quote_dash/css/main.css' %}">
+    <title>A Web Page</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-secondary navbar-dark fixed-top">
+    <span class="navbar-text col-md-4">
+    </span>
+    <span class="navbar-text col-md-4">
+        <h4>Welcome to Quote Dashboard</h4>
+    </span>
+</nav>
+<div class="container-fluid" style="margin-top:80px">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Register</h5>
+            <form class="form-horizontal" action="/register" method="post">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4" for="first_name">First Name:</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="first_name" name="first_name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4" for="last_name">Last Name:</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="last_name" name="last_name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4" for="email">Email:</label>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4" for="password">Password:</label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-4" for="password_confirmation">Password Confirmation:</label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    
+        <div class="col-md-6">
+                <h5>Login</h5>
+            <form class="form-horizontal" action="/login" method="post">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-2" for="email">Email:</label>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-1"></div>
+                    <label class="control-label col-md-2" for="password">Password:</label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
